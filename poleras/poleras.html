@@ -31,14 +31,16 @@
 
     <main class="contenido">
 
-        <h1>Sección de Poleras</h1>
+        <div class="bloque-titulo">
+        <h1 class="titulo-principal">Sección de Poleras</h1>
+        </div>
 
         <section class="producto-card">
             <div class="imagen-contenedor">
             <img src="poleraOversizeBeige.png" alt="Polera oversize"></div>
 
             <div class="info-producto">
-                <h2>Pantalón Baggy</h2>
+                <h2>Polera Oversize Beige</h2>
 
                 <p class="descripcion">
                 Estilo relajado con actitud. Nuestra polera oversize urbana es perfecta para un look streetwear auténtico. Corte amplio, caída suelta y tela de alta calidad que brinda comodidad y presencia. Combínala con jeans, joggers o shorts para un outfit moderno y versátil.
@@ -48,7 +50,7 @@
                 ✔ Ideal para outfits urbanos<br>
                 </p>
 
-                <p class="precio">Bs. 180</p>
+                <p class="precio">Bs. 130</p>
 
                 <div class="menu-desplegable">
                     <button class="boton-desplegable">
@@ -75,6 +77,26 @@
     </main>
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const imagenes = [
+        "../media/fondo1.jpg",
+        "../media/fondo2.jpg",
+        "../media/fondo3.jpg",
+        "../media/fondo4.jpg"
+    ];
+
+    const imagenAleatoria = imagenes[Math.floor(Math.random() * imagenes.length)];
+
+    document.body.style.backgroundImage = 
+        `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${imagenAleatoria})`;
+
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundAttachment = "fixed";
+});
+</script>
 
 </body>
 </html>

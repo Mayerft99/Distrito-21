@@ -31,12 +31,14 @@
 
     <main class="contenido">
 
-        <h1>Sección de Pantalones</h1>
+        <div class="bloque-titulo">
+        <h1 class="titulo-principal">Sección de Pantalones</h1>
+        </div>
 
         <section class="producto-card">
 
             <div class="imagen-contenedor">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdiQFqpQQdXuqAg5br8QAnZdcEfDmznJTzZtbMBkAKh3QZ4VUF9RKCjxPXIB9_BBYfTGQ&usqp=CAU" alt="Pantalón baggy">
+            <img src="pantalonbaggy.png" alt="Pantalón baggy">
             </div>
 
             <div class="info-producto">
@@ -79,6 +81,26 @@
     </main>
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const imagenes = [
+        "../media/fondo1.jpg",
+        "../media/fondo2.jpg",
+        "../media/fondo3.jpg",
+        "../media/fondo4.jpg"
+    ];
+
+    const imagenAleatoria = imagenes[Math.floor(Math.random() * imagenes.length)];
+
+    document.body.style.backgroundImage = 
+        `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${imagenAleatoria})`;
+
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundAttachment = "fixed";
+});
+</script>
 
 </body>
 </html>

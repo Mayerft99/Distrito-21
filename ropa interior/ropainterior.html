@@ -31,11 +31,13 @@
 
     <main class="contenido">
 
-        <h1>Sección de Ropa Interior</h1>
+        <div class="bloque-titulo">
+        <h1 class="titulo-principal">Sección de Ropa Interior</h1>
+        </div>
 
         <section class="producto-card">
             <div class="imagen-contenedor">
-            <img src="rpi gbaa.avif" alt="Ropa Interior">
+            <img src="bwp.png" alt="Ropa Interior">
             </div>
 
             <div class="info-producto">
@@ -57,7 +59,6 @@
                     </button>
 
                     <div class="contenido-desplegable">
-                        <a href="#">S</a>
                         <a href="#">M</a>
                         <a href="#">L</a>
                         <a href="#">XL</a>
@@ -76,6 +77,26 @@
     </main>
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const imagenes = [
+        "../media/fondo1.jpg",
+        "../media/fondo2.jpg",
+        "../media/fondo3.jpg",
+        "../media/fondo4.jpg"
+    ];
+
+    const imagenAleatoria = imagenes[Math.floor(Math.random() * imagenes.length)];
+
+    document.body.style.backgroundImage = 
+        `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${imagenAleatoria})`;
+
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundAttachment = "fixed";
+});
+</script>
 
 </body>
 </html>

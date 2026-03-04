@@ -8,24 +8,46 @@
 
 
 /* MENÚ SUPERIOR */
+/* EL CONTENEDOR PADRE ES EL QUE EMPUJA */
+header {
+    /* El margen negativo sube el header y arrastra el contenido de abajo hacia arriba */
+    margin-top: -80px; 
+    transition: margin-top 0.4s ease-in-out;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative; 
+    z-index: 999;
+}
+
+/* MENÚ SUPERIOR */
 .menu-superior {
     width: fit-content;
-    margin: 20px auto;
+    margin: 20px auto; 
     padding: 15px 40px;
-
     display: flex;
     justify-content: center;
     gap: 25px;
-
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-
     border-radius: 40px;
     border: 1px solid rgba(255,255,255,0.2);
     box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    
+    /* El menú está invisible hasta que se activa */
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
+/* CUANDO EL MOUSE SE ACERCA AL TECHO DE LA PANTALLA */
+header:hover {
+    margin-top: 0px; /* Al volver a 0, empuja físicamente el resto de la página */
+}
+
+header:hover .menu-superior {
+    opacity: 1;
+}
 .menu-superior a {
     color: white;
     text-decoration: none;
@@ -38,45 +60,57 @@
     background: rgba(255,255,255,0.15);
 }
 
-/* CONTENEDOR */
-.contenedor {
-    display: flex;
-    padding: 30px;
-    gap: 30px;
-}
 
 /* MENÚ LATERAL */
 .menu-lateral {
-    width: 200px;
+    /* Agregamos 'px' y lo ponemos en 0 para que empiece exactamente 
+       a la misma altura que la tarjeta de producto */
+    margin-top: 186px !important; 
+    width: 220px; /* Asegúrate de mantener el ancho */
+}
+
+/* También asegúrate de que el contenedor padre tenga esto: */
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea los techos de ambos bloques */
+    gap: 30px;
+    padding: 30px;
 }
 
 .overlay {
+    color: white;
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    padding: 25px;
+    border-radius: 20px;
     border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .menu-lateral h3 {
-    margin-bottom: 15px;
+    color: white;
     text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
 }
 
 .menu-lateral a {
     display: block;
-    padding: 10px;
+    padding: 12px;
     text-decoration: none;
-    color: #333;
-    border-radius: 5px;
+    color: #ddd;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 .menu-lateral a:hover {
-    background-color: #3498db;
+    background: rgba(255,255,255,0.15);
     color: white;
 }
+
 
 /* PRODUCTO */
 
@@ -85,10 +119,26 @@
 }
 
 .producto-card {
- 
-    background: none;
-    box-shadow: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+
+    padding: 25px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.producto-card h2 {
+    color: white;
+}
+
+.producto-card p {
+    color: #ddd;
 }
 
 .producto-card img {
@@ -114,27 +164,31 @@
 /* BOTONES */
 .boton-desplegable,
 .boton-comprar {
-    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    padding: 12px 20px;
+    border-radius: 4px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 200px;
+
 }
 
 .boton-desplegable {
-    background-color: #3498db;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
     color: white;
 }
 
 .boton-comprar {
-    background-color: #27ae60;
+   background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
     color: white;
     font-size: 1em;
 }
 
 .boton-comprar:hover {
-    background-color: #219150;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 /* MENÚ DESPLEGABLE */
@@ -146,7 +200,8 @@
 }
 
 .boton-desplegable {
-    background-color: #3498db;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
     color: white;
     padding: 12px 20px;
     font-size: 1.1em;
@@ -158,16 +213,23 @@
 }
 
 .boton-desplegable:hover {
-    background-color: #2980b9;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .contenido-desplegable {
     display: none;
     position: absolute;
-    background-color: white;
+
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     min-width: 180px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    border-radius: 4px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+
     z-index: 1;
     top: 100%;
     left: 50%;
@@ -176,7 +238,7 @@
 }
 
 .contenido-desplegable a {
-    color: #2d2d2d;
+     color: white;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -203,6 +265,7 @@
     }
 
     .producto-card {
+        color: white;
         flex-direction: column;
         text-align: center;
     }
@@ -212,10 +275,7 @@
         max-width: 300px;
     }
 
-    .boton-desplegable,
-    .boton-comprar {
-        width: 100%;
-    }
+
 }
 .bloque-titulo {
     width: fit-content;      
@@ -252,6 +312,11 @@
 }
 
 .categoria-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 380px;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -267,8 +332,8 @@
 
 .categoria-card img {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
+    height: 250px;
+    object-fit: contain;   /* se adapta completa */
 }
 
 .categoria-card h2 {
